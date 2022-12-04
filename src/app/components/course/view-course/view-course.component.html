@@ -1,0 +1,31 @@
+<section class="bg-white dark:bg-gray-900">
+  <div class="container px-6 py-10 mx-auto">
+      <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Cursos</h1><br>
+
+
+
+      <div class="flex flex-wrap -m-4">
+        <ng-container *ngFor="let course of courses">
+            <div class="xl:w-1/3 md:w-1/2 p-4">
+                <div class="bg-white p-6 rounded-lg">
+                    <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1206&q=80" alt="Image Size 720x400">
+                    <div class="flex justify-between">
+                        <h3 class="tracking-widest text-indigo-500 text-lg font-bold title-font">{{course.name}}</h3>
+                    </div>
+                    <div class="flex flex-col justify-between py-6 lg:mx-1">
+                      <a class="font-semiboldtext-sm text-gray-500 dark:text-gray-670">
+                        {{course.description}}
+                    </a>
+                    <a class=" font-semibold text-gray-600 dark:text-indigo-500">
+                      <br>
+                      <a class="font-bold text-gray-600 dark:text-indigo-500 ">Idioma: </a>{{course.lenguage}}
+                  </a>
+                    <br>
+                    <a class=" font-bold text-gray-800 text-2xl dark:text-indigo-500">
+                      <a>$</a>{{course.price}}
+                  </a>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+  </div>
