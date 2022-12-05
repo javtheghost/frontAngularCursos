@@ -12,6 +12,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ViewCourseComponent } from './components/course/view-course/view-course.component';
 import { ViewCategoryComponent } from './components/category/view-category/view-category.component';
 import { FooterComponent } from './components/footer/footer/footer.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 @NgModule({
@@ -25,11 +27,14 @@ import { FooterComponent } from './components/footer/footer/footer.component';
     ViewCourseComponent,
     ViewCategoryComponent,
     FooterComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSkeletonLoaderModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

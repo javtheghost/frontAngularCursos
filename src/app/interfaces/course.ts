@@ -3,4 +3,5 @@ export interface Course{
   description: string
   price: number
   lenguage: string
+  image: string
 }

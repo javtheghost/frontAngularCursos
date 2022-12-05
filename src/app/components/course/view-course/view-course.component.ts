@@ -9,17 +9,13 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class ViewCourseComponent implements OnInit {
 
-  courses: Course[] = []
-  constructor(private _courseService: CourseService) { }
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.onDataCoursesTable()
+
   }
 
-  onDataCoursesTable(){
-    this._courseService.getCourses().subscribe(res =>{
-      this.courses = res
-    })
-  }
+
 
 }

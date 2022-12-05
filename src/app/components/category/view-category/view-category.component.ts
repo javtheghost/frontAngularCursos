@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class ViewCategoryComponent implements OnInit {
   categories:Category[] = []
+  loader = true;
   constructor(private _categoryService:CategoryService) { }
 
   ngOnInit(): void {
@@ -17,6 +18,7 @@ export class ViewCategoryComponent implements OnInit {
   onDataProvidersTable(){
     this._categoryService.getCategories().subscribe(res => {
       this.categories = res;
+      this.loader = false;
     });
   }
 }

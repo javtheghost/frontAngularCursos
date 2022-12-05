@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ViewUserComponent implements OnInit {
   users: User[] = []
+  loader = true;
 
   constructor(private _productService: UserService) { }
 
@@ -19,6 +20,7 @@ export class ViewUserComponent implements OnInit {
   onDataProvidersTable(){
     this._productService.getProviders().subscribe(res => {
       this.users = res;
+      this.loader = false;
     });
   }
 }
