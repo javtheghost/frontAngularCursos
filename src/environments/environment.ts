@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  apiCursos: "https://apicursos.onrender.com/api/",
+  apiCursos: "https://nodejsapicursos-master-production.up.railway.app/api/",
   endPointCursos: "courses",
   endPointUsers: "users",
   endPointCategories: "categories"
