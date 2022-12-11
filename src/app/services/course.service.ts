@@ -20,4 +20,14 @@ export class CourseService {
     return this.http.get<Course[]>(direccion)
 
   }
+
+  addPersona(course: Course): Observable<void> {
+    let direccion = this.api + this.endPoint
+    return this.http.post<void>(direccion, course);
+  }
+
+  deleteCourse(id: String): Observable<void> {
+    let direccion = this.api + this.endPoint
+    return this.http.delete<void>(direccion);
+  }
 }

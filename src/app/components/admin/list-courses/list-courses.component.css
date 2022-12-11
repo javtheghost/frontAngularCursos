@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+  }
+icons-acciones{
+  cursor: pointer;
+}
+.btnEdit{
+  cursor: pointer;
+  color: rgb(109, 109, 168);
+}
+.btnDelete{
+  cursor: pointer;
+  color: rgb(226, 86, 86);
+}

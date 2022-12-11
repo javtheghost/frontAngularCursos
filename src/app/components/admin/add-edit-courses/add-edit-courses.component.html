@@ -1,0 +1,32 @@
+
+<h2 mat-dialog-title>Agregar curso</h2>
+<form [formGroup]="formCourse" (ngSubmit)="addEditCourse()">
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input formControlName="name" matInput placeholder="Ingrese nombre" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <input formControlName="description" matInput placeholder="Ingrese descripción" autocomplete="off">
+
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Precio</mat-label>
+        <input formControlName="price" matInput placeholder="Precio" autocomplete="off" >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Idioma</mat-label>
+        <input formControlName="lenguage" matInput placeholder="Idioma" autocomplete="off" >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Imagen</mat-label>
+        <input formControlName="image"matInput placeholder="Ingresa la URL" autocomplete="off">
+      </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button  (click)="cancelar()" mat-button mat-dialog-close type="button">Cancel</button>
+    <button [disabled]="formCourse.invalid" [mat-dialog-close]="true" cdkFocusInitial type="submit">Aceptar</button>
+  </mat-dialog-actions>
+
+</form>

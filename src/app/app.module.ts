@@ -14,8 +14,16 @@ import { ViewCategoryComponent } from './components/category/view-category/view-
 import { FooterComponent } from './components/footer/footer/footer.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { AddEditCoursesComponent } from './components/admin/add-edit-courses/add-edit-courses.component';
+import { ListCoursesComponent } from './components/admin/list-courses/list-courses.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
 
+
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+
+//ng material
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,15 +36,27 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     ViewCategoryComponent,
     FooterComponent,
     CarouselComponent,
+    AddEditCoursesComponent,
+    ListCoursesComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    BrowserAnimationsModule,
 
+    MatDialogModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {}
+  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -44,6 +44,17 @@
             >
             Usuarios
           </a>
+          <li class="mx-4 px-2">
+            <a
+              [routerLink]="['/listCourses']"
+              class="
+              text-white
+              px-3 py-1 rounded-md text-shadow text-center cursor-pointer
+              hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500
+                "
+              >
+              Cursos admin
+            </a>
         </li>
       </ul>
     </div>
@@ -106,6 +117,18 @@
             "
           >
           Usuarios
+        </a>
+      </li>
+      <li class="mx-4">
+        <a
+          [routerLink]="['/listCourses/addCourse']"
+          class="
+            text-white
+            px-3 py-1 rounded-md text-shadow text-center cursor-pointer
+            hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600
+            "
+          >
+          Cursos
         </a>
       </li>
     </ul>
