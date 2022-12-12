@@ -9,33 +9,31 @@ import { Course } from '../interfaces/course';
   providedIn: 'root'
 })
 export class CategoryService {
-  private api = environment.apiCursos;
-  private endPoint = environment.endPointCategories;
-  constructor(private http:HttpClient) { }
-
-
-  getCategories():Observable<Category[]>{
-    let direccion = this.api + this.endPoint
-    return this.http.get<Category[]>(direccion)
-
-  }
-
-  deleteCategory(id: number): Observable<void> {
-    let direccion = this.api + this.endPoint
-    return this.http.delete<void>(direccion);
-  }
-
-  addPersona(course: Course): Observable<void> {
-    let direccion = this.api + this.endPoint
-
-    return this.http.post<void>(direccion, course);
+  private api: string;
+  private endPoint: string;
+  constructor(private http:HttpClient) {
+    this.api = environment.apiCursos;
+    this.endPoint = environment.endPointCategories;
   }
 
 
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.api}${this.endPoint}`)
+  }
 
-  updatePersona(id: number, course: Course): Observable<void> {
-    let direccion = this.api + this.endPoint
+  deleteCategory(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.api}${this.endPoint}${id}`);
+  }
 
-    return this.http.put<void>(direccion, course);
+  addCategory(category: Category): Observable<void> {
+    return this.http.post<void>(`${this.api}${this.endPoint}`, category);
+  }
+
+  getCategory(id: string): Observable<Category> {
+    return this.http.get<Category>(`${this.api}${this.endPoint}${id}`)
+  }
+
+  updateCategory(id: string, category: Category): Observable<void> {
+    return this.http.put<void>(`${this.api}${this.endPoint}${id}`, category);
   }
 }

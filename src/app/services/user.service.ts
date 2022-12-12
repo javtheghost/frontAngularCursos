@@ -7,15 +7,31 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  private api = environment.apiCursos;
-  private endPoint = environment.endPointUsers;
-
-  constructor(private http:HttpClient) {}
+  private api: string;
+  private endPoint: string;
 
 
-  getProviders():Observable<User[]>{
-    let direccion = this.api + this.endPoint
-    return this.http.get<User[]>(direccion)
+  constructor(private http:HttpClient) {
+    this.api = environment.apiCursos;
+    this.endPoint = environment.endPointUsers;
+  }
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.api}${this.endPoint}`)
+  }
 
+  deleteUser(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.api}${this.endPoint}${id}`);
+  }
+
+  addUsers(user: User): Observable<void> {
+    return this.http.post<void>(`${this.api}${this.endPoint}`, user);
+  }
+
+  getUser(id: string): Observable<User> {
+    return this.http.get<User>(`${this.api}${this.endPoint}${id}`)
+  }
+
+  updateUser(id: string, user: User): Observable<void> {
+    return this.http.put<void>(`${this.api}${this.endPoint}${id}`, user);
   }
 }

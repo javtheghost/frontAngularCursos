@@ -7,6 +7,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ViewUserComponent } from './components/user/view-user/view-user.component';
 import { AddEditCoursesComponent } from './components/admin/add-edit-courses/add-edit-courses.component';
 import { ListCoursesComponent } from './components/admin/list-courses/list-courses.component';
+import { ListCategoriesComponent } from './components/admin/category/list-categories/list-categories.component';
+import { ListUsersComponent } from './components/admin/user/list-users/list-users.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch:'full'},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'viewCourse', component:ViewCourseComponent},
   {path: 'viewCategory', component:ViewCategoryComponent},
 
+  {path: 'listCategoriesAdmin', component:ListCategoriesComponent},
+  {path: 'listUsersAdmin', component:ListUsersComponent},
 
   {path: 'addCourse', component:AddEditCoursesComponent},
   {path: 'listCourses', component:ListCoursesComponent},

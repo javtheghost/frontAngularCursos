@@ -18,7 +18,7 @@ export class ViewUserComponent implements OnInit {
     this.onDataProvidersTable()
   }
   onDataProvidersTable(){
-    this._productService.getProviders().subscribe(res => {
+    this._productService.getUsers().subscribe(res => {
       this.users = res;
       this.loader = false;
     });

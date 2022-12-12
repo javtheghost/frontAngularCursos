@@ -1,49 +1,46 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CourseService } from 'src/app/services/course.service';
-import { Course } from '../../../interfaces/course';
-import { AddEditCoursesComponent } from '../add-edit-courses/add-edit-courses.component';
-
-
+import { User } from '../../../../interfaces/user';
+import { UserService } from '../../../../services/user.service';
+import { AddEditUsersComponent } from '../add-edit-users/add-edit-users.component';
 
 @Component({
-  selector: 'app-list-courses',
-  templateUrl: './list-courses.component.html',
-  styleUrls: ['./list-courses.component.css']
+  selector: 'app-list-users',
+  templateUrl: './list-users.component.html',
+  styleUrls: ['./list-users.component.css']
 })
-export class ListCoursesComponent implements OnInit {
-
-
+export class ListUsersComponent implements OnInit {
   //columnas de la tabla
-  displayedColumns: string[] =  ['imagen','nombre', 'descripcion', 'precio', 'idioma', 'acciones'];
-  dataSource: MatTableDataSource<Course>;
+  displayedColumns: string[] = ['nombre', 'correo', 'acciones'];
+  dataSource: MatTableDataSource<User>;
   loading: boolean = false;
   loader = true;
+  //paginator
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  //asignando la data a la lista
-  constructor(public dialog: MatDialog, private _courseService: CourseService,
+  constructor(
+    public dialog: MatDialog,
+    private _userService: UserService,
     private _snackBar: MatSnackBar) {
     this.dataSource = new MatTableDataSource();
   }
 
   ngOnInit(): void {
-    this.getCourses();
+    this.getUsers();
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  getCourses() {
+  getUsers() {
     this.loading = true;
 
-    this._courseService.getCourses().subscribe(data => {
+    this._userService.getUsers().subscribe(data => {
       this.loading = false;
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
@@ -60,9 +57,8 @@ export class ListCoursesComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  addEditCourse(_id?: string) {
-    const dialogRef = this.dialog.open(AddEditCoursesComponent, {
+  addEditUser(_id?: string) {
+    const dialogRef = this.dialog.open(AddEditUsersComponent, {
       width: '550px',
       disableClose: true,
       data: { _id: _id }
@@ -70,17 +66,17 @@ export class ListCoursesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        this.getCourses();
+        this.getUsers();
       }
     });
   }
 
-  deleteCourse(_id: string) {
+  deleteUser(_id: string) {
     this.loading = true;
 
     setTimeout(() => {
-      this._courseService.deleteCourse(_id).subscribe(() => {
-        this.getCourses();
+      this._userService.deleteUser(_id).subscribe(() => {
+        this.getUsers();
         this.mensajeExito();
 
       })
@@ -88,9 +84,10 @@ export class ListCoursesComponent implements OnInit {
   }
 
   mensajeExito() {
-    this._snackBar.open('El curso fue eliminado con exito', '', {
+    this._snackBar.open('¡El usuario fue eliminado con exito!', '', {
       duration: 2000,
       panelClass: ['color-snackbar']
     });
   }
+
 }

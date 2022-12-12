@@ -22,6 +22,10 @@ import { SharedModule } from './shared/shared.module';
 
 
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { ListCategoriesComponent } from './components/admin/category/list-categories/list-categories.component';
+import { AddEditCategoriesComponent } from './components/admin/category/add-edit-categories/add-edit-categories.component';
+import { AddEditUsersComponent } from './components/admin/user/add-edit-users/add-edit-users.component';
+import { ListUsersComponent } from './components/admin/user/list-users/list-users.component';
 
 //ng material
 @NgModule({
@@ -38,6 +42,10 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     CarouselComponent,
     AddEditCoursesComponent,
     ListCoursesComponent,
+    ListCategoriesComponent,
+    AddEditCategoriesComponent,
+    AddEditUsersComponent,
+    ListUsersComponent,
 
 
   ],
