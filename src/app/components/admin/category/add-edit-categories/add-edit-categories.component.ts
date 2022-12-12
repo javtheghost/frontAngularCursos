@@ -79,7 +79,7 @@ export class AddEditCategoriesComponent implements OnInit {
     }
   }
   mensajeExito(operacion: string) {
-    this._snackBar.open(`El curso fue ${operacion} con exito`, '', {
+    this._snackBar.open(`La categoria fue ${operacion} con exito`, '', {
       duration: 2000
     });
   }

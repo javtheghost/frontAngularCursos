@@ -23,7 +23,7 @@ export class UserService {
     return this.http.delete<void>(`${this.api}${this.endPoint}${id}`);
   }
 
-  addUsers(user: User): Observable<void> {
+  addUser(user: User): Observable<void> {
     return this.http.post<void>(`${this.api}${this.endPoint}`, user);
   }
 

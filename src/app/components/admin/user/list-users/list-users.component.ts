@@ -15,7 +15,7 @@ import { AddEditUsersComponent } from '../add-edit-users/add-edit-users.componen
 })
 export class ListUsersComponent implements OnInit {
   //columnas de la tabla
-  displayedColumns: string[] = ['nombre', 'correo', 'acciones'];
+  displayedColumns: string[] = ['nombre','edad', 'correo', 'acciones'];
   dataSource: MatTableDataSource<User>;
   loading: boolean = false;
   loader = true;
