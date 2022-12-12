@@ -10,24 +10,31 @@ import { environment } from '../../environments/environment';
 
 export class CourseService {
 
-  private api = environment.apiCursos;
-  private endPoint = environment.endPointCursos;
+  private api: string;
+  private endPoint: string;
 
-  constructor(private http:HttpClient) {}
-
-  getCourses():Observable<Course[]>{
-    let direccion = this.api + this.endPoint
-    return this.http.get<Course[]>(direccion)
-
+  constructor(private http:HttpClient) {
+    this.api = environment.apiCursos;
+    this.endPoint = environment.endPointCursos;
   }
 
-  addPersona(course: Course): Observable<void> {
-    let direccion = this.api + this.endPoint
-    return this.http.post<void>(direccion, course);
+  getCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(`${this.api}${this.endPoint}`)
   }
 
-  deleteCourse(id: String): Observable<void> {
-    let direccion = this.api + this.endPoint
-    return this.http.delete<void>(direccion);
+  deleteCourse(_id: string): Observable<void> {
+    return this.http.delete<void>(`${this.api}${this.endPoint}${_id}`);
+  }
+
+  addCourse(course: Course): Observable<void> {
+    return this.http.post<void>(`${this.api}${this.endPoint}`, course);
+  }
+
+  getCourse(id: string): Observable<Course> {
+    return this.http.get<Course>(`${this.api}${this.endPoint}${id}`)
+  }
+
+  updateCourse(id: string, course: Course): Observable<void> {
+    return this.http.put<void>(`${this.api}${this.endPoint}${id}`, course);
   }
 }

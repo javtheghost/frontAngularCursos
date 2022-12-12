@@ -12,3 +12,34 @@ icons-acciones{
   cursor: pointer;
   color: rgb(226, 86, 86);
 }
+
+table {
+  width: 100%;
+}
+img{
+  width: 100px;
+  height: 60px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 0px;
+}
+.mat-form-field {
+  font-size: 20px;
+  width: 90%;
+  margin-right: 10px;
+}
+
+.btnEdit, .btnDelete {
+  cursor: pointer;
+}
+
+.btnDelete {
+  color: #B0304B;
+}
+
+.btnEdit {
+  color: #376DCD;
+}
+.acciones{
+  align-items: center;
+}

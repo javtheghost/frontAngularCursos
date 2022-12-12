@@ -1,46 +1,53 @@
 <mat-toolbar>
-  <span>Administración de cursos</span>
-
+  <span>Administrar cursos</span>
 </mat-toolbar>
-
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 
 <mat-card>
-  <button (click)="addEditCourse()" mat-raised-button color="primary">
-    Agregar
-  </button>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <mat-form-field appearance="standard">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
+    </mat-form-field>
+    <button (click)="addEditCourse()" mat-raised-button color="primary">Agregar</button>
+  <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z15">
+      <ng-container matColumnDef="imagen">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+          <td mat-cell *matCellDef="let element"> <img [src]="element.image" /></td>
+      </ng-container>
+      <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+      <ng-container  matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+      <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef> Precio </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="descripcion">
-      <th mat-header-cell *matHeaderCellDef> Descripción </th>
-      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-    </ng-container>
-    <ng-container matColumnDef="precio">
-      <th mat-header-cell *matHeaderCellDef> Precio</th>
-      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-    </ng-container>
-    <ng-container matColumnDef="imagen">
-      <th mat-header-cell *matHeaderCellDef> Imagen </th>
-      <td mat-cell *matCellDef="let element"> {{element.image}} </td>
-    </ng-container>
-    <ng-container matColumnDef="acciones">
-      <th mat-header-cell *matHeaderCellDef> Acciones </th>
-      <td mat-cell *matCellDef="let element">
-        <mat-icon (click)="addEditCourse()" class="btnEdit" matTooltip="Editar">edit</mat-icon>
-        <mat-icon (click)="deleteCourse(element.id)" class="btnDelete" matTooltip="Delete">delete</mat-icon>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="idioma">
+          <th mat-header-cell *matHeaderCellDef> Idioma </th>
+          <td mat-cell *matCellDef="let element"> {{element.lenguage}} </td>
+      </ng-container>
+      <div class="acciones">
+          <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td mat-cell *matCellDef="let element">
+                  <mat-icon (click)="addEditCourse(element._id)" class="btnEdit" matTooltip="Editar">edit</mat-icon>
+                  <mat-icon (click)="deleteCourse(element._id)" class="btnDelete" matTooltip="Delete">delete</mat-icon>
+              </td>
+          </ng-container>
+      </div>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
 
 </mat-card>

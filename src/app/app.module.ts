@@ -40,7 +40,6 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     ListCoursesComponent,
 
 
-
   ],
   imports: [
     BrowserModule,
